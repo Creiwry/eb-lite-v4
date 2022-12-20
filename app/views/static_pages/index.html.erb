@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+    <br><br><br>
+    
+      <ul>
+        <% if user_signed_in? %>
+          <h1 class="h3 mb-3 font-weight-normal text-center">User page</h1>
+          <li>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "link-danger" %>
+          </li>
+
+          <li>
+            Your email: <%= current_user.email %>
+          </li>
+
+          <li>
+            <%= link_to "Secret page", static_pages_secret_path, class: "link-primary" %>
+          </li>
+
+          <li>
+            <%= link_to "Edit email / password", edit_user_registration_path, class: "link-primary" %>
+          </li>
+
+        <% else %>
+          <li>    
+            <%= link_to "Sign in", new_user_session_path, class: "link-primary" %>
+          </li>
+
+          <li>
+            <%= link_to "Sign up", new_user_registration_path, class: "link-primary" %>
+          </li>
+
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
