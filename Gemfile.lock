@@ -97,6 +97,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
+    dotenv (2.8.1)
     erubi (1.11.0)
     faker (3.0.0)
       i18n (>= 1.8.11, < 2)
@@ -252,6 +253,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise
+  dotenv
   faker
   jbuilder
   jsbundling-rails
