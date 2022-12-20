@@ -1,0 +1,53 @@
+<div >
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <ul>
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "link-danger dropdown-item"  %>
+              </li>
+
+              <li>
+                <%= link_to "Secret page", static_pages_secret_path, class: "link-primary dropdown-item" %>
+              </li>
+
+              <li>
+                <%= link_to "Edit email / password", edit_user_registration_path, class: "link-primary dropdown-item" %>
+              </li>
+
+            <% else %>
+              <li>    
+                <%= link_to "Sign in", new_user_session_path, class: "link-primary dropdown-item" %>
+              </li>
+
+              <li>
+                <%= link_to "Sign up", new_user_registration_path, class: "link-primary dropdown-item" %>
+              </li>
+
+            <% end %>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+  </nav>
+</div>
