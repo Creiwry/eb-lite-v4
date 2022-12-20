@@ -1,0 +1,15 @@
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+      </head>
+      <body>
+        <h1>Hi <%= @user.first_name %>, you have joined the event <%= @event.title %>!</h1>
+        <p>
+          The event takes place on <%= @event.start_date.strftime('%d/%b/%Y') %> at <%= @event.start_date.strftime('%H:%M') %> in <%= @event.location %>.
+        </p>
+        <p>
+          We hope you'll enjoy the event!
+        </p>
+      </body>
+    </html>
