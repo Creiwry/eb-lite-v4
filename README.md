@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+-add-bootstrap
+-> dropdowns work but popovers don't
