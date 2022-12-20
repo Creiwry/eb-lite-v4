@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @events.each do |event|%>
+    <div class="col col-sm-6">
+      <div class="card bg-light mb-3 h-80">
+        <h5 class="card-header text-truncate"><%= event.title %></h5>
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted"> <%= event.location %> </h6>
+          <p class="card-text text-truncate"> <%= event.description %> </p>
+          <div class="alert alert-primary text-center" role="alert">
+            <%= link_to "Join Event", new_participation_path(event.id),  class: "alert-link" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    
+  </div>
+</div>

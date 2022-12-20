@@ -9,23 +9,14 @@
 
 require 'faker'
 
-User.destroy_all
+#User.destroy_all
 Event.destroy_all
-Participation.destroy_all
+#Participation.destroy_all
 
-20.times do
-  User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email(domain: 'yopmail.com'),
-    encrypted_password: Faker::Lorem.characters,
-    description: Faker::Lorem.paragraph
-  )
-end
 
 50.times do
   Event.create(
-    title: Faker::Lorem.words(number: 3),
+    title: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph,
     start_date: Faker::Time.forward,
     duration: Faker::Number.within(range: 20..300),
@@ -35,10 +26,10 @@ end
   )
 end
 
-100.times do
-  Participation.create(
-    event: Event.all.sample,
-    participant: User.all.sample,
-    stripe_customer_id: Faker::Lorem.characters
-  )
-end
+# 100.times do
+#   Participation.create(
+#     event: Event.all.sample,
+#     participant: User.all.sample,
+#     stripe_customer_id: Faker::Lorem.characters
+#   )
+# end
