@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   get 'static_pages/secret'
 
-  root 'static_pages#index'
+  root 'events#index'
 end
