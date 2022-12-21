@@ -26,10 +26,16 @@
                     </br>
                     <h5 class="mt-2 mb-0">My Events:</h5>
                     <ul class="list-group">
-                      <% @events.each do |event| %>
-                      
-                        <%= link_to event.title, event_path(event.id), class: "list-group-item list-group-item-action" %>
-                      
+                      <% if @events.empty? %>
+                        <div class="px-4 mt-1">
+                            <p class="fonts"> No organised events yet! </p>
+                        </div>
+                      <% else %>
+                        <% @events.each do |event| %>
+                        
+                          <%= link_to event.title, event_path(event.id), class: "list-group-item list-group-item-action" %>
+                        
+                        <% end %>
                       <% end %>
                     </ul>
                     
