@@ -46,8 +46,11 @@ class EventsController < ApplicationController
   def update
     @user = current_user
     @event = Event.find(params[:id])
-    event_params = params[:user]
-    @event.update(
+    event_params = params[:event]
+    puts '$$$$$$$$$'
+    puts event_params
+    puts '$$$$$$$$$'
+    update = @event.update(
       title: event_params[:title],
       description: event_params[:description],
       start_date: event_params[:start_date],
@@ -56,11 +59,13 @@ class EventsController < ApplicationController
       location: event_params[:location]
     )
 
-    if @event.save
-      redirect_to event_path(@event.id)
-    else
-
+    if update == false
       render :edit
+      
+    else
+      redirect_to event_path(@event.id) 
+
+      
     end
   end
 
