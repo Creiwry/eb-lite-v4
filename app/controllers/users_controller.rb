@@ -21,9 +21,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    puts "$$$$$$$"
-    puts params
-    puts "$$$$$$$"
     user_params = params[:user]
     @user.update(first_name: user_params[:first_name], last_name: user_params[:last_name], description: user_params[:description])
     redirect_to user_path(@user.id)
