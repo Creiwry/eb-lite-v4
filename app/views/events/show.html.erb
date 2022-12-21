@@ -28,11 +28,7 @@
         <% if @event.organiser == current_user %>
           <div class="buttons text-center">
             <%= link_to "Edit Event", edit_event_path(@event.id), class: "btn btn-outline-primary px-4" %>
-          </div>
-          <br />
-          <div class="buttons text-center">
-            <%= link_to "Delete Event", event_path(@event.id), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-outline-danger px-4" %>
-          </div>   
+          </div>  
         <% else %>
           <div class="buttons text-center">
             <%= link_to "Join Event", new_participation_path, class:"btn btn-outline-primary px-4" %>
