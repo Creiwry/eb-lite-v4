@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+      <%= form_with model: @event, url: events_path, html: { class: "mt-3" } do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Create Event</h1>
+        <br />
+        <div class="form-group">
+          <%= f.label :title, "Title" %><br />
+          <%= f.text_field :title, autofocus: true, autocomplete: "Title", class: "form-control" %>
+        </div>
+        <br />
+        <div class="form-group">
+          <%= f.label :description, "Description" %><br />
+          <%= f.text_area :description, autofocus: true, autocomplete: "Description", class: "form-control" %>
+        </div>
+
+       
+        <br />
+
+        <div class="form-group">
+          <%= f.label :start_date, "Start Date" %><br />
+          <%= f.datetime_local_field :start_date, autofocus: true, autocomplete: "Start Date", class: "form-control" %>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+          <%= f.label :duration, "Duration" %><br />
+          <%= f.number_field :duration, in: 5..50000, step: 5, autofocus: true, autocomplete: "Duration", class: "form-control" %>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+          <%= f.label :price, "Price" %><br />
+          <%= f.number_field :price, in: 1..1000, step: 0.01, autofocus: true, autocomplete: "Price", class: "form-control" %>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+          <%= f.label :location, "Location" %><br />
+          <%= f.text_field :location, autofocus: true, autocomplete: "Location", class: "form-control" %>
+        </div>
+
+
+        <br />
+        <div class="actions mt-5">
+          <%= f.submit "Create", class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+      <% end %>
+      <br><br><br>
+
+
+      <%= link_to "Back", :back %>
+    </div>
+  </div>
+</div>

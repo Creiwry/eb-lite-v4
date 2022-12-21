@@ -7,10 +7,33 @@ class EventsController < ApplicationController
   def show 
   end
 
-  def create
+  def new
+    @event = Event.new
   end
 
-  def new
+  def create
+    @user = current_user
+    event_params = params[:event]
+    @event = Event.new(
+      title: event_params[:title],
+      description: event_params[:description],
+      start_date: event_params[:start_date],
+      duration: event_params[:duration],
+      price: event_params[:price],
+      location: event_params[:location],
+      organiser: @user
+    )
+
+    @event.save!
+
+    if @event.save
+      redirect_to event_path(@event.id)
+    else
+
+      redirect_to user_path(current_user.id)
+    end
+
+    
   end
 
   def edit
