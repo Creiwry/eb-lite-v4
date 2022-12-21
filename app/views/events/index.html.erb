@@ -8,7 +8,7 @@
           <h6 class="card-subtitle mb-2 text-muted"> <%= event.location %> </h6>
           <p class="card-text text-truncate"> <%= event.description %> </p>
           <div class="alert alert-primary text-center" role="alert">
-            <%= link_to "Join Event", new_participation_path(event.id),  class: "alert-link" %>
+            <%= link_to "See Event", event_path(event.id),  class: "alert-link" %>
           </div>
         </div>
       </div>

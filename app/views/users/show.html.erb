@@ -1,58 +1,45 @@
-<div class="container mt-5">
-    
-    <div class="row d-flex justify-content-center">
+<div class="container mt-5">  
+  <div class="row d-flex justify-content-center">      
+    <div class="col-md-7">
+      <div class="card p-3 py-4">
         
-        <div class="col-md-7">
-            
-            <div class="card p-3 py-4">
-                
-                <div class="text-center">
-                    <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle">
-                </div>
-                
-                <div class="text-center mt-3">
-                  <span class="bg-secondary p-1 px-4 rounded text-white">Organiser</span>
-                  <h5 class="mt-2 mb-0"><%= @user.first_name %> <%= @user.last_name %></h5>
-                  <span> <%= @user.email %> </span>
-                  
-                  <div class="px-4 mt-1">
-                      <p class="fonts"> <%= @user.description %> </p>
-                  
-                  </div>
-
-                  <div class="buttons">
-                    <%= link_to "Edit Profile", edit_user_path(@user.id), class: "btn btn-outline-primary px-4" %>
-                  </div>
-                  </br>
-                  <h5 class="mt-2 mb-0">My Events:</h5>
-                  <ul class="list-group">
-                    <% if @events.empty? %>
-                      <div class="px-4 mt-1">
-                          <p class="fonts"> No organised events yet! </p>
-                      </div>
-                    <% else %>
-                      <% @events.each do |event| %>
-                      
-                        <%= link_to event.title, event_path(event.id), class: "list-group-item list-group-item-action" %>
-                      
-                      <% end %>
-                    <% end %>
-                  </ul>
-                  <div>
-                  <%= link_to "Create Event", new_event_path, class:"btn btn-outline-primary px-4" %>
-                  </div>
-                    
-
-                    
-                </div>
-                
-               
-                
-                
-            </div>
-            
+        <div class="text-center">
+            <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle">
         </div>
         
+        <div class="text-center mt-3">
+          <span class="bg-secondary p-1 px-4 rounded text-white">Organiser</span>
+          <h5 class="mt-2 mb-0"><%= @user.first_name %> <%= @user.last_name %></h5>
+          <span> <%= @user.email %> </span>
+          
+          <div class="px-4 mt-1">
+              <p class="fonts"> <%= @user.description %> </p>
+          
+          </div>
+
+          <div class="buttons">
+            <%= link_to "Edit Profile", edit_user_path(@user.id), class: "btn btn-outline-primary px-4" %>
+          </div>
+          </br>
+          <h5 class="mt-2 mb-0">My Events:</h5>
+          <ul class="list-group">
+            <% if @events.empty? %>
+              <div class="px-4 mt-1">
+                  <p class="fonts"> No organised events yet! </p>
+              </div>
+            <% else %>
+              <% @events.each do |event| %>
+              
+                <%= link_to event.title, event_path(event.id), class: "list-group-item list-group-item-action" %>
+              
+              <% end %>
+            <% end %>
+          </ul>
+          <div>
+          <%= link_to "Create Event", new_event_path, class:"btn btn-outline-primary px-4" %>
+          </div>                    
+        </div>                                        
+      </div>        
     </div>
-    
+  </div>    
 </div>
