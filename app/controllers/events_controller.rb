@@ -47,9 +47,6 @@ class EventsController < ApplicationController
     @user = current_user
     @event = Event.find(params[:id])
     event_params = params[:event]
-    puts '$$$$$$$$$'
-    puts event_params
-    puts '$$$$$$$$$'
     update = @event.update(
       title: event_params[:title],
       description: event_params[:description],
