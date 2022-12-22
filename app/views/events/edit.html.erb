@@ -26,7 +26,7 @@
         <br />
         <div class="form-group">
           <%= f.label :start_date, "Start Date" %><br />
-          <%= f.text_field :start_date, autofocus: true, autocomplete: "Start Date", class: "form-control" %>
+          <%= f.datetime_local_field  :start_date, autofocus: true, autocomplete: "Start Date", class: "form-control" %>
         </div>
         <br />
 
@@ -34,13 +34,13 @@
 
         <div class="form-group">
           <%= f.label :duration, "Duration" %><br />
-          <%= f.text_field :duration, autofocus: true, autocomplete: "Duration", class: "form-control" %>
+          <%= f.number_field  :duration, autofocus: true, autocomplete: "Duration", class: "form-control" %>
         </div>
         <br />
 
         <div class="form-group">
           <%= f.label :price, "Price" %><br />
-          <%= f.text_field :price, autofocus: true, autocomplete: "Price", class: "form-control" %>
+          <%= f.number_field :price, autofocus: true, autocomplete: "Price", class: "form-control" %>
         </div>
         <br />
         <div class="form-group">
