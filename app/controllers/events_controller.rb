@@ -28,9 +28,10 @@ class EventsController < ApplicationController
     )
 
     if @event.save
+      flash[:notice] = 'Event created successfully'
       redirect_to event_path(@event.id)
     else
-
+      
       render :new
     end
 
@@ -69,7 +70,8 @@ class EventsController < ApplicationController
       render :edit
 
     else
-      redirect_to event_path(@event.id) 
+      flash[:notice] = 'Event edited successfully'
+      redirect_to event_path(@event.id)
 
     end
   end

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     unless current_user == @user
-      flash[:danger] = 'You cannot edit this profile'
+      flash[:alert] = 'You cannot edit this profile'
       redirect_to user_path(@user.id)
     end
    
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     unless current_user == @user
-      flash[:danger] = 'You cannot edit this profile'
+      flash[:alert] = 'You cannot edit this profile'
       redirect_to user_path(@user.id)
     end
 
@@ -37,6 +37,7 @@ class UsersController < ApplicationController
     if update == false
       render :edit
     else
+      flash[:notice] = 'Profile edited successfully'
       redirect_to user_path(@user.id)
     end
   end
