@@ -27,8 +27,6 @@ class EventsController < ApplicationController
       organiser: @user
     )
 
-    @event.save!
-
     if @event.save
       redirect_to event_path(@event.id)
     else
@@ -84,7 +82,7 @@ class EventsController < ApplicationController
       flash[:danger] = 'You\'re not the organiser for this event'
       redirect_to event_path(@event.id)
     end
-    
+
     @event.destroy
     redirect_to user_path(@user.id)
   end

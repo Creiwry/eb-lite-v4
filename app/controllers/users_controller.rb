@@ -31,10 +31,14 @@ class UsersController < ApplicationController
       flash[:danger] = 'You cannot edit this profile'
       redirect_to user_path(@user.id)
     end
-    
+
     user_params = params[:user]
-    @user.update(first_name: user_params[:first_name], last_name: user_params[:last_name], description: user_params[:description])
-    redirect_to user_path(@user.id)
+    update = @user.update(first_name: user_params[:first_name], last_name: user_params[:last_name], description: user_params[:description])
+    if update == false
+      render :edit
+    else
+      redirect_to user_path(@user.id)
+    end
   end
 
   def destroy
