@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :create, :edit, :update, :delete]
   skip_before_action :verify_authenticity_token, only: [:destroy]
   def index
     @events = Event.all
@@ -41,11 +42,21 @@ class EventsController < ApplicationController
   def edit
     @user = current_user
     @event = Event.find(params[:id])
+    unless @event.organiser_id == @user.id
+      flash[:danger] = 'You\'re not the organiser for this event'
+      redirect_to event_path(@event.id)
+    end
   end
 
   def update
     @user = current_user
     @event = Event.find(params[:id])
+
+    unless @event.organiser_id == @user.id
+      flash[:danger] = 'You\'re not the organiser for this event'
+      redirect_to event_path(@event.id)
+    end
+
     event_params = params[:event]
     update = @event.update(
       title: event_params[:title],
@@ -58,18 +69,32 @@ class EventsController < ApplicationController
 
     if update == false
       render :edit
-      
+
     else
       redirect_to event_path(@event.id) 
 
-      
     end
   end
 
   def destroy
     @user = current_user
     @event = Event.find(params[:id])
+
+    unless @event.organiser_id == @user.id
+      flash[:danger] = 'You\'re not the organiser for this event'
+      redirect_to event_path(@event.id)
+    end
+    
     @event.destroy
     redirect_to user_path(@user.id)
+  end
+
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = 'Please log in.'
+      redirect_to new_user_session_path
+    end
   end
 end
