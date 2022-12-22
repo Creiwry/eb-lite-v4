@@ -8,6 +8,7 @@ class EventsController < ApplicationController
 
   def show 
     @event = Event.find(params[:id])
+    @number_of_participants = @event.participations.count
   end
 
   def new

@@ -12,6 +12,8 @@
         </div>
         <br/>
         <div class="container w-50">
+          <span>Organiser email: <%= @event.organiser.email %> </span>
+          <br/>
           <span>Location: <%= @event.location %> </span>
           <br/>
           <span>Date: <%= @event.start_date.strftime('%d %b %Y, %I:%M %p') %> </span>
@@ -19,6 +21,8 @@
           <span>Duration: <%= @event.duration %> mins</span>
           <br/>
           <span>Price per ticket: <%= @event.price %> euro</span>
+          <br/>
+          <span>Number of attending: <%= @number_of_participants %></span>
         </div>
         <br/>
         <div class="px-4 mt-1">
