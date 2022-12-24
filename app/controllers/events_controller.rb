@@ -1,6 +1,11 @@
+require_relative '../services/stripe_product_creator'
+
 class EventsController < ApplicationController
   before_action :authenticate_user, only: [:new, :create, :edit, :update, :delete]
   skip_before_action :verify_authenticity_token, only: [:destroy]
+
+
+
   def index
     @events = Event.all
 
@@ -16,6 +21,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    
     @user = current_user
     event_params = params[:event]
     @event = Event.new(
@@ -28,11 +34,12 @@ class EventsController < ApplicationController
       organiser: @user
     )
 
+
     if @event.save
       flash[:notice] = 'Event created successfully'
+      StripeProductCreator.new(@event.id).create
       redirect_to event_path(@event.id)
     else
-      
       render :new
     end
 
