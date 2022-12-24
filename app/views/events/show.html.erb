@@ -35,7 +35,7 @@
           </div>  
         <% else %>
           <div class="buttons text-center">
-            <%= link_to "Join Event", new_participation_path, class:"btn btn-outline-primary px-4" %>
+            <%= link_to "Join Event", new_participation_path(:event_id => @event.id), class:"btn btn-outline-primary px-4" %>
           </div>            
         <% end %>
         </br>                 
