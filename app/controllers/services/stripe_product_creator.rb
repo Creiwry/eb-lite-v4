@@ -1,4 +1,5 @@
-class StripeProductCreator
+
+class Services::StripeProductCreator
   def initialize(event_id)
     @event = Event.find(event_id)
   end

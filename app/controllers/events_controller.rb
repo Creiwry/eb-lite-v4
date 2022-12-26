@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../services/stripe_product_creator'
 
 # Events Controller
 class EventsController < ApplicationController
@@ -27,7 +26,7 @@ class EventsController < ApplicationController
 
     if @event.save
       flash[:notice] = 'Event created successfully'
-      StripeProductCreator.new(@event.id).create
+      Services::StripeProductCreator.new(@event.id).create
       redirect_to event_path(@event.id)
     else
       render :new
