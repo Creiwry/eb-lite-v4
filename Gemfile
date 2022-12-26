@@ -43,7 +43,7 @@ gem 'devise'
 
 gem 'faker'
 
-gem 'dotenv'
+gem 'dotenv-rails'
 
 gem 'stripe'
 
