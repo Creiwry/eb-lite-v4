@@ -1,17 +1,17 @@
+# frozen_string_literal: true
+
 require_relative '../services/stripe_product_creator'
 
+# Events Controller
 class EventsController < ApplicationController
-  before_action :authenticate_user, only: [:new, :create, :edit, :update, :delete]
+  before_action :authenticate_user, only: %i[new create edit update delete]
   skip_before_action :verify_authenticity_token, only: [:destroy]
-
-
 
   def index
     @events = Event.all
-
   end
 
-  def show 
+  def show
     @event = Event.find(params[:id])
     @number_of_participants = @event.participations.count
   end
@@ -21,19 +21,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    
     @user = current_user
-    event_params = params[:event]
-    @event = Event.new(
-      title: event_params[:title],
-      description: event_params[:description],
-      start_date: event_params[:start_date],
-      duration: event_params[:duration],
-      price: event_params[:price],
-      location: event_params[:location],
-      organiser: @user
-    )
-
+    @event = Event.new(event_params)
+    @event.organiser = @user
 
     if @event.save
       flash[:notice] = 'Event created successfully'
@@ -42,17 +32,15 @@ class EventsController < ApplicationController
     else
       render :new
     end
-
-    
   end
 
   def edit
     @user = current_user
     @event = Event.find(params[:id])
-    unless @event.organiser_id == @user.id
-      flash[:danger] = 'You\'re not the organiser for this event'
-      redirect_to event_path(@event.id)
-    end
+    return if @event.organiser_id == @user.id
+
+    flash[:danger] = 'You\'re not the organiser for this event'
+    redirect_to event_path(@event.id)
   end
 
   def update
@@ -64,23 +52,13 @@ class EventsController < ApplicationController
       redirect_to event_path(@event.id)
     end
 
-    event_params = params[:event]
-    update = @event.update(
-      title: event_params[:title],
-      description: event_params[:description],
-      start_date: event_params[:start_date],
-      duration: event_params[:duration],
-      price: event_params[:price],
-      location: event_params[:location]
-    )
+    update = @event.update(event_params)
 
     if update == false
       render :edit
-
     else
       flash[:notice] = 'Event edited successfully'
       redirect_to event_path(@event.id)
-
     end
   end
 
@@ -99,10 +77,7 @@ class EventsController < ApplicationController
 
   private
 
-  def authenticate_user
-    unless current_user
-      flash[:danger] = 'Please log in.'
-      redirect_to new_user_session_path
-    end
+  def event_params
+    params.require(:event).permit(:title, :description, :start_date, :duration, :location, :price)
   end
 end
