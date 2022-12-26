@@ -3,6 +3,6 @@
 <h2 class="text-center" >The event you want to attend: <%= @event.title %> </h2>
 <h3 class="text-center" >The price of the event: <%= @event.price %> eur </h3>
 <br />
-<div class="text-center">
-  <%= render partial: "pay/stripe/checkout_button", locals: { session: @checkout_session, title: "Checkout" } %>
+<div class="buttons text-center">
+  <%= button_to "Checkout", controller: "participations", action: "create", event_id: @event.id %>
 </div>
