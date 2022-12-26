@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   get 'static_pages/secret'
   root 'events#index'
-  get '/checkout', to: 'checkouts#show'
+  get '/success', to: 'successes#show'
   # scope '/checkout' do
   #   post 'create', to: 'checkout#create', as: 'checkout_create'
   #   get 'success', to: 'checkout#success', as: 'checkout_success'
